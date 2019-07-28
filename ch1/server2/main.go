@@ -33,6 +33,8 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 // counter echoes the number of calls so far.
 func counter(w http.ResponseWriter, r *http.Request) {
+	// 假如有两个请求同一时刻去更新count
+	// 必须保证每次修改变量的最多只能有一个goroutine，这也就是代码里的mu.Lock()和mu.Unlock()调用
 	mu.Lock()
 	fmt.Fprintf(w, "Count %d\n", count)
 	mu.Unlock()

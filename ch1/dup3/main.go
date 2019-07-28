@@ -24,6 +24,7 @@ func main() {
 			fmt.Fprintf(os.Stderr, "dup3: %v\n", err)
 			continue
 		}
+		// ReadFile函数返回一个字节切片（byte slice），必须把它转换为string，才能用strings.Split分割。
 		for _, line := range strings.Split(string(data), "\n") {
 			counts[line]++
 		}

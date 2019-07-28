@@ -14,7 +14,9 @@ import (
 
 //!+
 func main() {
-	fmt.Println(strings.Join(os.Args[1:], " "))
+	// 输入go run main.go 1 2 3
+	fmt.Println(strings.Join(os.Args[1:], " "))	// 1 2 3
+	fmt.Println(os.Args[1:]) // [1 2 3]
 }
 
 //!-

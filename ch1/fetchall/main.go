@@ -20,14 +20,18 @@ func main() {
 	start := time.Now()
 	ch := make(chan string)
 	for _, url := range os.Args[1:] {
+		// goroutine是一种函数的并发执行方式，
+		// 而channel是用来在goroutine之间进行参数传递。main函数本身也运行在一个goroutine中
 		go fetch(url, ch) // start a goroutine
 	}
 	for range os.Args[1:] {
+		// 阻塞住了，直到fetch所在的goroutine往这个channel里写入、或者接收值,才往下执行
 		fmt.Println(<-ch) // receive from channel ch
 	}
 	fmt.Printf("%.2fs elapsed\n", time.Since(start).Seconds())
 }
 
+// 每一个fetch函数在执行时都会往channel里发送一个值(ch <- expression)
 func fetch(url string, ch chan<- string) {
 	start := time.Now()
 	resp, err := http.Get(url)
