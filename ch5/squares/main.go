@@ -13,6 +13,8 @@ import "fmt"
 // the next square number each time it is called.
 func squares() func() int {
 	var x int
+	// 对squares的一次调用会生成一个局部变量x并返回一个匿名函数
+	// 每次调用匿名函数，都会使x的值加1
 	return func() int {
 		x++
 		return x * x
@@ -20,6 +22,7 @@ func squares() func() int {
 }
 
 func main() {
+	// 函数值记录了状态，它属于引用类型，所以不可以用==比较
 	f := squares()
 	fmt.Println(f()) // "1"
 	fmt.Println(f()) // "4"

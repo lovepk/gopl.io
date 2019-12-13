@@ -8,7 +8,17 @@ package main
 
 import (
 	"fmt"
-	. "net"
+)
+
+type Flags uint
+
+const (
+	// 每个常量对应表达式1 << iota  
+	FlagUp Flags = 1 << iota  // 1<<0 --->  00001
+	FlagBroadcast   // 00010
+	FlagLoopback  // 00100
+	FlagPointToPoint  // 01000
+	FlagMulticast   // 10000
 )
 
 //!+
@@ -18,7 +28,13 @@ func SetBroadcast(v *Flags) { *v |= FlagBroadcast }
 func IsCast(v Flags) bool   { return v&(FlagBroadcast|FlagMulticast) != 0 }
 
 func main() {
-	var v Flags = FlagMulticast | FlagUp
+	var v Flags = FlagMulticast | FlagUp  // 10000 | 00001  10001
+	fmt.Println(FlagUp)
+	fmt.Println(FlagBroadcast)
+	fmt.Println(FlagLoopback)
+	fmt.Println(FlagPointToPoint)
+	fmt.Printf("%b\n", v)
+
 	fmt.Printf("%b %t\n", v, IsUp(v)) // "10001 true"
 	TurnDown(&v)
 	fmt.Printf("%b %t\n", v, IsUp(v)) // "10000 false"

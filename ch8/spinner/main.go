@@ -17,6 +17,7 @@ func main() {
 	const n = 45
 	fibN := fib(n) // slow
 	fmt.Printf("\rFibonacci(%d) = %d\n", n, fibN)
+	// 主函数退出，所有的goroutine都会被直接打断
 }
 
 func spinner(delay time.Duration) {

@@ -21,6 +21,8 @@ func main() {
 	}
 	for {
 		conn, err := listener.Accept()
+		// 阻塞住了，用了接受一个连接
+		log.Print("阻塞住了的话，不能被打印哦")
 		if err != nil {
 			log.Print(err) // e.g., connection aborted
 			continue

@@ -14,6 +14,7 @@ import (
 
 //!+
 func main() {
+	// map类型的零值是nil，也就是没有引用任何哈希表
 	seen := make(map[string]bool) // a set of strings
 	input := bufio.NewScanner(os.Stdin)
 	for input.Scan() {

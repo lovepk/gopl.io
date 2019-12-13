@@ -29,6 +29,7 @@ func main() {
 	//!+main
 	data := []string{"one", "", "three"}
 	fmt.Printf("%q\n", nonempty(data)) // `["one" "three"]`
+	// 输入的slice和输出的slice共享一个底层数组，这样可以避免分配另一个数组，不过原来的数据将可能会被覆盖
 	fmt.Printf("%q\n", data)           // `["one" "three" "three"]`
 	//!-main
 }

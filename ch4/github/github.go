@@ -12,6 +12,9 @@ import "time"
 
 const IssuesURL = "https://api.github.com/search/issues"
 
+// 转为JSON的过程叫编组（编码），通过调用json.Marshal函数来完成
+// 在编码时，默认使用go语言结构体的成员名字作为json的对象，只有导出的结构体成员才会被编码，
+// 所以选择用大写字母开头
 type IssuesSearchResult struct {
 	TotalCount int `json:"total_count"`
 	Items      []*Issue

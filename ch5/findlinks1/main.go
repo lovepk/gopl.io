@@ -29,6 +29,7 @@ func main() {
 
 //!+visit
 // visit appends to links each link found in n and returns the result.
+// Go语言使用可变栈，栈的大小按需增加（初始时很小），这使得我们使用递归时不用考虑溢出和安全问题
 func visit(links []string, n *html.Node) []string {
 	if n.Type == html.ElementNode && n.Data == "a" {
 		for _, a := range n.Attr {
