@@ -21,12 +21,17 @@ func main() {
 		close(naturals)
 	}()
 
+	// 当一个channel被关闭后，再向该channel发送数据将导致一个panic异常。接收者接收最后一个数据后，后续
+	// 的操作将不再阻塞，会返回一个零值。所以接收者要判断channel是否关闭：
+	// x, ok = <-naturals  通过布尔值ok判断，然后主动break跳出死循环
+	//  for x := range naturals   会自己跳出循环
 	// Squarer
 	go func() {
 		for x := range naturals {
 			squares <- x * x
 		}
-		close(squares)
+		//  squares是双向channel可以直接关闭
+		close(squares)  
 	}()
 
 	// Printer (in main goroutine)

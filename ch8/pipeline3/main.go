@@ -17,10 +17,12 @@ func counter(out chan<- int) {
 	close(out)
 }
 
+//  代码规范：当一个channel作为一个函数参数时，它一般总是专门用于只发送或者只接收
 func squarer(out chan<- int, in <-chan int) {
 	for v := range in {
 		out <- v * v
 	}
+	// close(in)  对一个只接收的channel调用close将是一个编译错误
 	close(out)
 }
 

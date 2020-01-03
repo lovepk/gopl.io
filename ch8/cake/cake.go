@@ -19,12 +19,12 @@ import (
 type Shop struct {
 	Verbose        bool
 	Cakes          int           // number of cakes to bake
-	BakeTime       time.Duration // time to bake one cake
-	BakeStdDev     time.Duration // standard deviation of baking time
-	BakeBuf        int           // buffer slots between baking and icing
+	BakeTime       time.Duration // time to bake one cake     烘烤时间
+	BakeStdDev     time.Duration // standard deviation of baking time  烘烤时间标准差
+	BakeBuf        int           // buffer slots between baking and icing  
 	NumIcers       int           // number of cooks doing icing
-	IceTime        time.Duration // time to ice one cake
-	IceStdDev      time.Duration // standard deviation of icing time
+	IceTime        time.Duration // time to ice one cake   冰冻时间
+	IceStdDev      time.Duration // standard deviation of icing time   冰冻时间标准差
 	IceBuf         int           // buffer slots between icing and inscribing
 	InscribeTime   time.Duration // time to inscribe one cake
 	InscribeStdDev time.Duration // standard deviation of inscribing time

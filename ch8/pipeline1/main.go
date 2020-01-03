@@ -13,6 +13,8 @@ func main() {
 	naturals := make(chan int)
 	squares := make(chan int)
 
+	// channel可以用于将多个goroutine连接在一起，一个channel的输出作为下一个channel的输入。
+	// 这种串联的channel就是管道。
 	// Counter
 	go func() {
 		for x := 0; ; x++ {

@@ -13,6 +13,7 @@ import (
 
 //!+
 func main() {
+	// go语句会使语句中的函数在一个新创建的goroutine中运行。而go语句本身会迅速地完成。
 	go spinner(100 * time.Millisecond)
 	const n = 45
 	fibN := fib(n) // slow

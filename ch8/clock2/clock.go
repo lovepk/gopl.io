@@ -36,6 +36,7 @@ func main() {
 			log.Print(err) // e.g., connection aborted
 			continue
 		}
+		// 让每一次handleConn的调用都进入一个独立的goroutine
 		go handleConn(conn) // handle connections concurrently
 	}
 	//!-
